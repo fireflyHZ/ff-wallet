@@ -128,6 +128,24 @@ $ firefly-wallet new-address --bls
 请输入密码(长度至少6位):******
 f3wzaczkndddpf55nlmkyni5q3mqgkgycvj6hnqp2b27zo2yvtbl27ru7dykghi63clxtrv4dsvzvhrmb65coq
 ```
+
+### 导出私钥（慎重）
+
+
+```
+$ ./firefly-wallet  list
+请输入密码(长度至少6位):******
+Address                                                                                 Balance  Nonce
+f12uc2ntixp4kmx7j5yk7pnrur2w6ggeutm45z6ja                                               0 FIL    0
+f174jo52r2rq5b7nqiy3eqphheqxsis2o2avwotbq                                               0 FIL    0
+f3qa2axjy5ejuzbvyk3weja7hvnjb7y4mh2s3y4b44nhfzmdhgly6edmcdjar6nfy7vccjvjrswom5pqera52q  0 FIL    0
+
+$ ./firefly-wallet  export-address --address  f3qa2axjy5ejuzbvyk3weja7hvnjb7y4mh2s3y4b44nhfzmdhgly6edmcdjar6nfy7vccjvjrswom5pqera52q
+请输入密码(长度至少6位):******
+7b2254797065223a22626c73222c22507269766172222b6579223a222b6c37557763586952756f34492f366d2b56514566511111756338746d616c4f6e7676324b66506c62696333337d
+```
+
+
 ### 从矿工帐号提现
 
 ```
@@ -169,10 +187,21 @@ $ firefly-wallet set-owner --really-do-it f02420 f1xxxxxnew  f1xxxxxnew
 
 ### 更换worker key
 
-worker key必须是BLS地址，参见前述地址生成。
-更换worker key后，消息上链7.5小时后生效。  
+- worker key必须是BLS地址，参见前述地址生成。
+- 导出私钥，参见前述导出私钥
+
+将私钥放入一个文本文件，并用密码加密后的worker_key.txt.gpg通过邮件发送给运维，密码通过其他通信方式告知。
+
+```
+$ echo 7b2254797065223a22626c73222c22507269766172222b6579223a222b6c37557763586952756f34492f366d2b56514566511111756338746d616c4f6e7676324b66506c62696333337d > /tmp/worker_key.txt
+$ gpg  --symmetric /tmp/worker_key.txt
+$ ls /tmp/worker_key.txt.gpg
+/tmp/worker_key.txt.gpg
+```
+- 更换worker key
 
 *注意*：
+- 更换worker key后，消息上链7.5小时后生效。  
 - 需要在生效前，加入到具备签名能力的钱包服务中,否则会导致挖矿出块失败。  
 
 ```
