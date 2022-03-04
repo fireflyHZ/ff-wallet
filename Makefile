@@ -1,14 +1,14 @@
 
-all: firefly-wallet
+all: ff-wallet
 
 depend:
 	git submodule update --init --recursive
 	make -C extern/filecoin-ffi all
 
 clean:
-	rm firefly-wallet
+	rm ff-wallet
 	make -C extern/filecoin-ffi clean
 
 
-firefly-wallet: depend
+ff-wallet: depend
 	go build ./

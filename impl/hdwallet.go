@@ -64,7 +64,8 @@ import (
 func derivePrikey(key *hdkeychain.ExtendedKey, path accounts.DerivationPath) (*ecdsa.PrivateKey, error) {
 	var err error
 	for _, n := range path {
-		key, err = key.Child(n)
+		//key, err = key.Child(n)
+		key, err = key.Derive(n)
 		if err != nil {
 			return nil, err
 		}
@@ -82,7 +83,7 @@ func derivePrikey(key *hdkeychain.ExtendedKey, path accounts.DerivationPath) (*e
 func derivePrikeyBytes(key *hdkeychain.ExtendedKey, path accounts.DerivationPath) ([]byte, error) {
 	var err error
 	for _, n := range path {
-		key, err = key.Child(n)
+		key, err = key.Derive(n)
 		if err != nil {
 			return []byte{}, err
 		}
