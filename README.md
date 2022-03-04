@@ -1,4 +1,4 @@
-<h1 align="center">firefly-wallet </h1>
+<h1 align="center">ff-wallet </h1>
 
 <!--
 <p align="center">
@@ -10,7 +10,9 @@
 </p>
 -->
 
-lotus-wallet-tool用于管理客户钱包账户，可以创建钱包，支持转账，miner提现，设置owner，worker key等等。
+注：firefly公司业务全部由元和科技（HK）负责，所以原组织仓库（https://github.com/fireflyblock/firefly-wallet）停止更新使用，后续将在此更新。
+
+ff-wallet用于管理客户钱包账户，可以创建钱包，支持转账，miner提现，设置owner，worker key等等。
 
 ## 目录
 
